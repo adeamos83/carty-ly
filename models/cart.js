@@ -12,6 +12,9 @@ var cartSchema = new mongoose.Schema({
     sku: {
         type: String
     },
+    filename: {
+        type: String
+    },
     quantity: {
         type: Number,
         default: 1

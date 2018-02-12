@@ -41,7 +41,7 @@ function getItem(item){
      '<div class="card mb-4">' +
       '<img class="card-img-top" src="./assets/img/'+item.filename+'"alt="Card image cap">' +
       '<div class="card-body">' +
-        '<p class="card-subtitle text-center" id="item-'+item.filename.substr(0, item.filename.length - 4)+'">' + item.name + '</p>' +
+        '<p class="card-subtitle text-center">' + item.name + '</p>' +
         '<p class="card-text text-center">'+ toDollars(item.price).toLocaleString('en-US', { style: 'currency', currency: 'USD' }) + '</p>' +
         '<div class="text-center">' +
             '<a href="#" class="btn btn-outline-secondary btn-sm btn-item">Add to cart</a>' +
@@ -53,6 +53,7 @@ function getItem(item){
     newItem.data("id", item.filename.substr(0, item.filename.length - 4));
     newItem.data("name", item.name);
     newItem.data("price", toDollars(item.price));
+    newItem.data("filename", item.filename);
     $("#products").append(newItem);
 }
 
@@ -62,7 +63,8 @@ function pickedItem(item){
     $.post("/api/cart", {
         name: item.data("name"),
         price: item.data("price"),
-        sku: item.data("id")
+        sku: item.data("id"),
+        filename: item.data("filename")
     })
     .then(function(newItem){
         addCartItem(newItem);
@@ -70,12 +72,19 @@ function pickedItem(item){
     .catch(function(err){
         console.log(err)
     })
+    // Removes verbiage if shopping cart is empty
+    $(".cart-content").empty("h5")
 }
 
 
 
 // Get all items from current items from Shopping Cart
 function addCartItems(items){
+    // Adds verbiage if shopping cart is empty
+    if(items.length === 0){
+        var noItems = $('<h5 class="text-center">Nothing in your cart,</h5><h5 class="text-center">start shopping.</h5>')
+        $(".cart-content").append(noItems);
+    }
     items.forEach(function(item){
         addCartItem(item);
     });
@@ -84,7 +93,7 @@ function addCartItems(items){
 // Adds Items to Shopping Cart
 function addCartItem(item){
     var cartItem = $('<li class="list-group-item cart-item-wrapper" >'+
-    '<img src="./assets/img/'+item.sku+'.png" class="float-left border border-secondary" style="height: 50px; width: 50px; object-fit: cover"</img>'+
+    '<img src="./assets/img/'+item.filename+'" class="float-left border border-secondary" style="height: 50px; width: 50px; object-fit: cover"</img>'+
     '<div class="text-right font-weight-light">'+item.name+' <span class="del-item text-secondary"><i class="fa fa-times-circle"></i></span></div>'+
     '<div class="text-right font-weight-light">'+item.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })+'</div>'+
     '</li>')
@@ -98,7 +107,6 @@ function addCartItem(item){
     
     // Update the purchase amount for the cart total
     updateCartAmount(item, true);
-    
 }
 
 // Remove item from Cart
@@ -143,6 +151,12 @@ function updateCartTotal(add){
         var newCartTotal = currentCartTotal - 1;
     }
     $("#cart-total").text(newCartTotal);
+    
+    // Adds verbiage if shopping cart is empty
+    if(newCartTotal === 0){
+        var noItems = $('<h5 class="text-center">Nothing in your cart,</h5><h5 class="text-center">start shopping.</h5>')
+        $(".cart-content").append(noItems);
+    }
 }
 
 // Calculates the total $ amount for the Cart
