@@ -25,6 +25,18 @@ $(document).ready(function(){
         removeItem($(this).closest(".cart-item-wrapper"));
     })
     
+    // Adds border to hovered item
+    $("#products").on("mouseenter", ".item-wrapper", function(){
+          $(this).find(".btn").addClass( "btn-select" );
+          $(this).find(".btn").removeClass("btn-outline-cart");
+    })
+    
+    // Adds border to hovered item
+    $("#products").on("mouseleave", ".item-wrapper", function(){
+      $(this).find(".btn").addClass( "btn-outline-cart" );
+      $(this).find(".btn").removeClass("btn-select");
+    })
+    
 });
 
 // Get items from third-party JSON database
@@ -38,13 +50,13 @@ function getItems(items){
 function getItem(item){
     
     var newItem = $('<div class="col-12 col-md-4 col-lg-3 item-wrapper">' +
-     '<div class="card mb-4">' +
-      '<img class="card-img-top" src="./assets/img/'+item.filename+'"alt="Card image cap">' +
+     '<div class="card card-select mb-4">' +
+      '<img class="card-img-top" src="./assets/img/'+item.filename+'"alt="product image">' +
       '<div class="card-body">' +
         '<p class="card-subtitle text-center">' + item.name + '</p>' +
         '<p class="card-text text-center">'+ toDollars(item.price).toLocaleString('en-US', { style: 'currency', currency: 'USD' }) + '</p>' +
         '<div class="text-center">' +
-            '<a href="#" class="btn btn-outline-secondary btn-sm btn-item">Add to cart</a>' +
+            '<a href="#" class="btn btn-outline-cart btn-sm btn-item">Add to cart</a>' +
         '</div>' +
       '</div>' +
     '</div>' +
@@ -93,7 +105,7 @@ function addCartItems(items){
 // Adds Items to Shopping Cart
 function addCartItem(item){
     var cartItem = $('<li class="list-group-item cart-item-wrapper" >'+
-    '<img src="./assets/img/'+item.filename+'" class="float-left border border-secondary" style="height: 50px; width: 50px; object-fit: cover"</img>'+
+    '<img src="./assets/img/'+item.filename+'" class="float-left border border-secondary cart-img" alt="product image thumbnail"</img>'+
     '<div class="text-right font-weight-light">'+item.name+' <span class="del-item text-secondary"><i class="fa fa-times-circle"></i></span></div>'+
     '<div class="text-right font-weight-light">'+item.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })+'</div>'+
     '</li>')

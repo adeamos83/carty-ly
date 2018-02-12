@@ -1,3 +1,5 @@
+/* General Styles */
+
 body {
     font-family: 'Lato', sans-serif;
 }
@@ -9,6 +11,33 @@ a:focus {
 .bg-cartly {
     background: #0d01d1;
 }
+
+
+.btn-outline-cart {
+    color: #868e96;
+    background-color: transparent;
+    background-image: none;
+    border-color: #868e96;
+}
+
+.btn-outline-cart:hover, .btn-select {
+    color: #0d01d1;
+    background-color: #ffffff;
+    border: 2px solid #0d01d1;
+}
+
+.card-select:hover {
+    border: 2px solid #0d01d1;
+}
+
+.short-hr {
+    width: 60%;
+    height: 1px;
+    background-color: black;
+}
+
+/* Shopping Cart Modal Styles */
+
 .modal-content {
     background-color: transparent!important;
     border: none;
@@ -30,18 +59,8 @@ body.modal-open > :not(.modal) {
     border: none;
 }
 
-.btn-outline-secondary:hover {
-    color: #0d01d1;
-    background-color: #ffffff;
-    border: 2px solid #0d01d1;
-}
-
-.card:hover {
-    border: 2px solid #0d01d1;
-}
-
-.short-hr {
-    width: 60%;
-    height: 1px;
-    background-color: black;
+.cart-img {
+    height: 50px; 
+    width: 50px; 
+    object-fit: cover;
 }
