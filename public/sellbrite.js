@@ -2,12 +2,18 @@
 $(document).ready(function(){
     $.getJSON("/api/products")
     .then(getItems)
+    .catch(function(err){
+        console.log(err)
+    })
     
     $.getJSON("/api/cart")
     .then(function(cartItems){
         addCartItems(cartItems);
         totalCartItems(cartItems);
         cartAmount(cartItems);
+    })
+    .catch(function(err){
+        console.log(err)
     })
     
     $("#products").on("click", ".item-wrapper", function(){

@@ -24,6 +24,6 @@ app.get("/api/products", function(req, res){
 })
 
 
-app.listen(port, function(){
+app.listen(port, process.env.IP, function(){
     console.log("App is running on PORT" + process.env.PORT);
 })
