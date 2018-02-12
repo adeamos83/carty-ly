@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cart.ly</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">        
+        <link rel="stylesheet" href="style.css">
+         <script
+          src="https://code.jquery.com/jquery-3.3.1.min.js"
+          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+          crossorigin="anonymous">
+        </script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-cartly">
+          <a class="navbar-brand" href="#"><i class="fa fa-shopping-cart"></i> Cart.ly</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Shop</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#shopCart" id="cart">Your Cart <span class="badge badge-light" id="cart-total">0</span></a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div class="container mt-4">
+             <h3>Shop our featured collection</h3>
+             <div class="row" id="products">
+             </div>
+        </div>
+        
+        
+        
+
+        <!-- Modal -->
+        <div class="modal fade" id="shopCart" tabindex="-1" role="dialog" aria-labelledby="shopCartCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                  <h5 class="modal-title text-center" id="shopCartTitle">Your Cart</h5>
+                  <ul class="list-group list-group-flush" id="cart-items">
+                  </ul>
+                  <!--<p>Nothing in your cart, start shopping</p>-->
+                  <hr class="short-hr">
+                  <div class="row mt-3">
+                    <h5 class="modal-title col-6" style="padding-left: 35px">Total</h5>
+                    <h5 class="modal-title col-6 text-right" style="padding-right: 35px">$<span id="cart-amount">0.00</span></h5>
+                  </div>
+                  <div class="text-center mt-4">
+                      <button class="btn btn-outline-secondary btn-sm" data-dismiss="modal">Back</button>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+        
+        <script type="text/javascript" src="sellbrite.js"></script>
+        <!-- Bootstrap jQuery CDN -->
+        <!--Bootstrap Javascript CDN-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    </body>
+</html>

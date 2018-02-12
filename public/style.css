@@ -1,0 +1,47 @@
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+a:focus {
+    outline: none;
+}
+
+.bg-cartly {
+    background: #0d01d1;
+}
+.modal-content {
+    background-color: transparent!important;
+    border: none;
+}
+
+body.modal-open > :not(.modal) {
+    /*-webkit-filter: blur(3px);*/
+    /*-moz-filter: blur(3px);*/
+    /*-o-filter: blur(3px);*/
+    /*-ms-filter: blur(3px);*/
+    opacity: 0.9;
+	filter: blur(3px);
+	background-color: #fff;
+    
+}
+
+.list-group-item {
+    background-color: transparent!important;
+    border: none;
+}
+
+.btn-outline-secondary:hover {
+    color: #0d01d1;
+    background-color: #ffffff;
+    border: 2px solid #0d01d1;
+}
+
+.card:hover {
+    border: 2px solid #0d01d1;
+}
+
+.short-hr {
+    width: 60%;
+    height: 1px;
+    background-color: black;
+}
