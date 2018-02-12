@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-// Cart Model
+// Cart Database Model
 
 var cartSchema = new mongoose.Schema({
     name: {

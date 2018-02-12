@@ -1,6 +1,5 @@
 var express = require("express"),
     app = express(),
-    port = process.env.PORT || 3000,
     bodyParser = require("body-parser");
 var fs = require("fs");
    
@@ -24,6 +23,6 @@ app.get("/api/products", function(req, res){
 })
 
 
-app.listen(port, process.env.IP, function(){
+app.listen(process.env.PORT, process.env.IP, function(){
     console.log("App is running on PORT" + process.env.PORT);
 })
